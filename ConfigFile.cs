@@ -4,10 +4,10 @@ using System.Dynamic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
-using Thorium_IO;
-using Thorium_Reflection;
+using Thorium.IO;
+using Thorium.Reflection;
 
-namespace Thorium_Config
+namespace Thorium.Config
 {
     public class ConfigFile : DynamicObject
     {
