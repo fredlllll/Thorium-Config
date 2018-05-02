@@ -28,6 +28,17 @@ namespace Thorium.Config
             obj = JObject.Parse(File.ReadAllText(FilePath));
         }
 
+        public bool TryGet<T>(string key, out T result, T defaultValue = default(T))
+        {
+            if(obj.HasValue(key))
+            {
+                result = obj.Get<T>(key);
+                return true;
+            }
+            result = defaultValue;
+            return false;
+        }
+
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
             if(cache.TryGetValue(binder.Name, out result)) //try get from cache
@@ -61,7 +72,7 @@ namespace Thorium.Config
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static dynamic GetConfig(string name)
+        public static ConfigFile GetConfig(string name)
         {
             name += "_config.json";
 
@@ -70,7 +81,7 @@ namespace Thorium.Config
             return new ConfigFile(file);
         }
 
-        public static dynamic GetClassConfig()
+        public static ConfigFile GetClassConfig()
         {
             Type t = ReflectionHelper.GetCallingType();
             string name = Char.ToLowerInvariant(t.Name[0]) + String.Join("", t.Name.Skip(1).Select(x => char.IsUpper(x) ? ("_" + x) : (char.ToLowerInvariant(x).ToString())));
