@@ -40,6 +40,13 @@ namespace Thorium.Config
             return new ConfigFile(file);
         }
 
+        /// <summary>
+        /// will return the config using the class name. every uppercase letter will be replaced by its lowercase variant precedented by an _ (except the first letter) and a _config.json will be appended.
+        /// this also looks for the default file variant.
+        /// 
+        /// example: ThoriumClient => thorium_client_config.json => thorium_client_config.json.default
+        /// </summary>
+        /// <returns></returns>
         public static ConfigFile GetClassConfig()
         {
             Type t = ReflectionHelper.GetCallingType();
