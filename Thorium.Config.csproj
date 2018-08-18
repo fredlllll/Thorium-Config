@@ -10,4 +10,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Thorium-Extensions-String\Thorium.Extensions.String.csproj" />
+    <ProjectReference Include="..\Thorium-IO\Thorium.IO.csproj" />
+    <ProjectReference Include="..\Thorium-Reflection\Thorium.Reflection.csproj" />
+  </ItemGroup>
+
 </Project>
