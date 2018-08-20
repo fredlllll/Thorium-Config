@@ -50,7 +50,7 @@ namespace Thorium.Config
         public static ConfigFile GetClassConfig()
         {
             Type t = ReflectionHelper.GetCallingType();
-            string name = Char.ToLowerInvariant(t.Name[0]) + String.Join("", t.Name.Skip(1).Select(x => char.IsUpper(x) ? ("_" + x) : (char.ToLowerInvariant(x).ToString())));
+            string name = Char.ToLowerInvariant(t.Name[0]) + String.Join("", t.Name.Skip(1).Select(x => char.IsUpper(x) ? ("_" + char.ToLowerInvariant(x)) : (char.ToLowerInvariant(x).ToString())));
             return GetConfig(name);
         }
     }
